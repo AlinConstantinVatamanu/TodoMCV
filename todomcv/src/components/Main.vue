@@ -2,7 +2,7 @@
   <div id="main">
     <input @keyup.enter="addTodo" placeholder="add todo" />
     <ul id="todos">
-      <li v-for="todo in todoList" v-bind:key="todo">
+      <li v-for="todo in todos" v-bind:key="todo">
         {{ todo }}
         <span class="close" v-on:click="deleteTodo">x</span>
       </li>
@@ -13,19 +13,14 @@
 <script>
 export default {
   name: "Main",
-  data() {
-    
-  },
-
-  computed: {
-    todoList () {
-      return this.$store.state.todos
+  /* data() {
+  }, */
+  /* props: ["todos"], */
+  props: {
+    todos: {
+      type: Array
     }
   },
-
-  /* props: {
-    inputMessage,
-  }, */
 
   methods: {
     addTodo: function (event) {
@@ -37,9 +32,9 @@ export default {
       }
     },
 
-    deleteTodo: function (event) {
+    /* deleteTodo: function (event) {
       console.log(event.target.parentElement.value);
-    },
+    }, */
   },
 };
 </script>

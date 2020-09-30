@@ -5,22 +5,15 @@ export default createStore({
     todos: []
   },
   mutations: {
-    addTodo (todo) {
-      this.state.todos.push(todo);
-      console.log(this.state.todos);
+    addTodo (state, todo) {
+      state.todos.push(todo);
     }/* ,
     deleteTodo (todo) {
 
     } */
   },
 
-  /* getters: {
-    getTodoList () {
-      //console.log(this.state.todos);
-      return this.state.todos;
-    }
-  }, */
-
+  getters: {},
   actions: {
     addTodoCommit ({ commit }, todo){
       commit('addTodo', todo);
