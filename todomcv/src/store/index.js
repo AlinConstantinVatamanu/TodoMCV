@@ -11,7 +11,7 @@ export default createStore({
     },
     deleteTodo(state, idToDelete) {
       state.todos = state.todos.filter(todo => todo.id !== +idToDelete);
-    }
+    },
   },
 
   getters: {},
@@ -19,10 +19,9 @@ export default createStore({
     addTodoCommit({ commit }, todo) {
       commit('addTodo', todo);
     },
-
     deleteTodoCommit({ commit }, idToDelete) {
       commit('deleteTodo', idToDelete);
-    }
+    },
 
   },
   modules: {

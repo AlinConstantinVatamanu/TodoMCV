@@ -3,8 +3,15 @@
     <input @keyup.enter="addTodo" placeholder="add todo" />
     <ul id="todos">
       <li v-for="todo in todos" v-bind:key="todo" :data-id="todo.id">
-        <input type="checkbox" :checked="todo.completed" />
-        {{ todo.value }}
+        <input
+          type="checkbox"
+          class="strikethrough"
+          :checked="todo.completed"
+          @change="todo.completed = !todo.completed"
+        />
+        <label class="todo">
+          {{ todo.value }}
+        </label>
         <button type="button" v-on:click="deleteTodo">X</button>
       </li>
     </ul>
@@ -46,5 +53,9 @@ h1 {
 
 li {
   list-style-type: none;
+}
+
+.strikethrough:checked + .todo {
+  text-decoration: line-through;
 }
 </style>
