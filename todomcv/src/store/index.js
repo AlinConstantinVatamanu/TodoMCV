@@ -4,6 +4,7 @@ export default createStore({
   state: {
     todos: [],
     todoId: 0,
+    visibility: 'all',
   },
   mutations: {
     addTodo(state, todo) {
@@ -12,9 +13,25 @@ export default createStore({
     deleteTodo(state, idToDelete) {
       state.todos = state.todos.filter(todo => todo.id !== +idToDelete);
     },
+    changeVisibility(state, newVisibility) {
+      state.visibility = newVisibility;
+    },
   },
 
-  getters: {},
+  getters: {
+    getAllTodos: state => {
+      return state.todos;
+    },
+
+    getActiveTodos: state => {
+      return state.todos.filter(todo => !todo.completed);
+    },
+
+    getCompletedTodos: state => {
+      return state.todos.filter(todo => todo.completed);
+    }
+  },
+
   actions: {
     addTodoCommit({ commit }, todo) {
       commit('addTodo', todo);
@@ -22,7 +39,15 @@ export default createStore({
     deleteTodoCommit({ commit }, idToDelete) {
       commit('deleteTodo', idToDelete);
     },
-
+    filterToAll({ commit }, newVisibility) {
+      commit('changeVisibility', newVisibility);
+    },
+    filterToActive({ commit }, newVisibility) {
+      commit('changeVisibility', newVisibility);
+    },
+    filterToComplete({ commit }, newVisibility) {
+      commit('changeVisibility', newVisibility);
+    },
   },
   modules: {
   }

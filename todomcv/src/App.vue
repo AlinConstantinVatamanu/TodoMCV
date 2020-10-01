@@ -13,22 +13,24 @@ import Footer from "./components/Footer.vue";
 
 export default {
   name: "App",
-  //store,
   components: {
     Header,
     Main,
-    Footer
+    Footer,
   },
 
   computed: {
-    todos () {
-      return this.$store.state.todos;
-    } 
+    todos() {
+      let filter = {
+        all: this.$store.getters.getAllTodos,
+        active: this.$store.getters.getActiveTodos,
+        completed: this.$store.getters.getCompletedTodos,
+      };
+      return filter[this.$store.state.visibility];
+    },
   },
-
 };
 </script>
 
 <style>
-
 </style>
