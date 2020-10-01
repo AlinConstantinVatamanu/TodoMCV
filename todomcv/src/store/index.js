@@ -22,13 +22,14 @@ export default createStore({
     getAllTodos: state => {
       return state.todos;
     },
-
     getActiveTodos: state => {
       return state.todos.filter(todo => !todo.completed);
     },
-
     getCompletedTodos: state => {
       return state.todos.filter(todo => todo.completed);
+    },
+    getActiveQuantity: state => {
+      return state.todos.filter(todo => !todo.completed).length;
     }
   },
 

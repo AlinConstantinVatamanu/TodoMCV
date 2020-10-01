@@ -15,6 +15,7 @@
         <button type="button" v-on:click="deleteTodo">X</button>
       </li>
     </ul>
+    <label class="quantity"> {{ activeQuantity }} items left </label>
     <button type="button" v-on:click="filterAll">All</button>
     <button type="button" v-on:click="filterActive">Active</button>
     <button type="button" v-on:click="filterCompleted">Completed</button>
@@ -28,6 +29,9 @@ export default {
   props: {
     todos: {
       type: Array,
+    },
+    activeQuantity: {
+      type: Number,
     },
   },
 
