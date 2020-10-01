@@ -19,6 +19,9 @@
     <button type="button" v-on:click="filterAll">All</button>
     <button type="button" v-on:click="filterActive">Active</button>
     <button type="button" v-on:click="filterCompleted">Completed</button>
+    <button type="button" v-show="existsCompleted" v-on:click="removeCompleted">
+      Clear completed
+    </button>
   </div>
 </template>
 
@@ -32,6 +35,9 @@ export default {
     },
     activeQuantity: {
       type: Number,
+    },
+    existsCompleted: {
+      type: Boolean,
     },
   },
 
@@ -59,6 +65,10 @@ export default {
 
     filterCompleted: function () {
       this.$store.dispatch("filterToComplete", "completed");
+    },
+
+    removeCompleted: function () {
+      this.$store.dispatch("removeCompleted");
     },
   },
 };
