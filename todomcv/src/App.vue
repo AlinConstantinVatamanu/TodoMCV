@@ -1,7 +1,7 @@
 <template>
   <div id="todoApp">
     <Header />
-    <Main :todos="todos"></Main>
+    <Main :todos="todos" :activeQuantity="activeQuantity"></Main>
     <Footer />
   </div>
 </template>
@@ -27,6 +27,9 @@ export default {
         completed: this.$store.getters.getCompletedTodos,
       };
       return filter[this.$store.state.visibility];
+    },
+    activeQuantity() {
+      return this.$store.getters.getActiveQuantity;
     },
   },
 };
