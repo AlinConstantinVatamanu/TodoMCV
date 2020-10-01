@@ -18,7 +18,10 @@ export default createStore({
     },
     removeCompletedTodos(state) {
       state.todos = state.todos.filter(todo => !todo.completed);
-    }
+    },
+    completeAllTodos(state) {
+      state.todos = state.todos.map(todo => ({ ...todo, completed: true }));
+    },
   },
 
   getters: {
@@ -57,6 +60,9 @@ export default createStore({
     },
     removeCompleted({ commit }) {
       commit('removeCompletedTodos');
+    },
+    completeAll({ commit }) {
+      commit('completeAllTodos');
     }
 
   },
