@@ -1,5 +1,6 @@
 <template>
   <div id="main">
+    <button type="button" v-on:click="completeAll">Complete All</button>
     <input @keyup.enter="addTodo" placeholder="add todo" />
     <ul id="todos">
       <li v-for="todo in todos" v-bind:key="todo" :data-id="todo.id">
@@ -49,26 +50,24 @@ export default {
         event.target.value = "";
       }
     },
-
     deleteTodo: function (event) {
       let idToDelete = event.target.parentNode.getAttribute("data-id");
       this.$store.dispatch("deleteTodoCommit", idToDelete);
     },
-
     filterAll: function () {
       this.$store.dispatch("filterToAll", "all");
     },
-
     filterActive: function () {
       this.$store.dispatch("filterToActive", "active");
     },
-
     filterCompleted: function () {
       this.$store.dispatch("filterToComplete", "completed");
     },
-
     removeCompleted: function () {
       this.$store.dispatch("removeCompleted");
+    },
+    completeAll: function () {
+      this.$store.dispatch("completeAll");
     },
   },
 };
