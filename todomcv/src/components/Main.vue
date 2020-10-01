@@ -15,6 +15,9 @@
         <button type="button" v-on:click="deleteTodo">X</button>
       </li>
     </ul>
+    <button type="button" v-on:click="filterAll">All</button>
+    <button type="button" v-on:click="filterActive">Active</button>
+    <button type="button" v-on:click="filterCompleted">Completed</button>
   </div>
 </template>
 
@@ -40,6 +43,18 @@ export default {
     deleteTodo: function (event) {
       let idToDelete = event.target.parentNode.getAttribute("data-id");
       this.$store.dispatch("deleteTodoCommit", idToDelete);
+    },
+
+    filterAll: function () {
+      this.$store.dispatch("filterToAll", "all");
+    },
+
+    filterActive: function () {
+      this.$store.dispatch("filterToActive", "active");
+    },
+
+    filterCompleted: function () {
+      this.$store.dispatch("filterToComplete", "completed");
     },
   },
 };
