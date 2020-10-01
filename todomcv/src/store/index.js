@@ -39,7 +39,7 @@ export default createStore({
     },
     getExistsCompleted: state => {
       return (state.todos.filter(todo => todo.completed).length > 0) ? true : false;
-    }
+    },
   },
 
   actions: {
@@ -63,7 +63,7 @@ export default createStore({
     },
     completeAll({ commit }) {
       commit('completeAllTodos');
-    }
+    },
 
   },
   modules: {
