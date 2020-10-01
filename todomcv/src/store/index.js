@@ -16,6 +16,9 @@ export default createStore({
     changeVisibility(state, newVisibility) {
       state.visibility = newVisibility;
     },
+    removeCompletedTodos(state) {
+      state.todos = state.todos.filter(todo => !todo.completed);
+    }
   },
 
   getters: {
@@ -30,6 +33,9 @@ export default createStore({
     },
     getActiveQuantity: state => {
       return state.todos.filter(todo => !todo.completed).length;
+    },
+    getExistsCompleted: state => {
+      return (state.todos.filter(todo => todo.completed).length > 0) ? true : false;
     }
   },
 
@@ -49,6 +55,10 @@ export default createStore({
     filterToComplete({ commit }, newVisibility) {
       commit('changeVisibility', newVisibility);
     },
+    removeCompleted({ commit }) {
+      commit('removeCompletedTodos');
+    }
+
   },
   modules: {
   }

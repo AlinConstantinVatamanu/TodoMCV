@@ -1,7 +1,11 @@
 <template>
   <div id="todoApp">
     <Header />
-    <Main :todos="todos" :activeQuantity="activeQuantity"></Main>
+    <Main
+      :todos="todos"
+      :activeQuantity="activeQuantity"
+      :existsCompleted="existsCompleted"
+    ></Main>
     <Footer />
   </div>
 </template>
@@ -30,6 +34,9 @@ export default {
     },
     activeQuantity() {
       return this.$store.getters.getActiveQuantity;
+    },
+    existsCompleted() {
+      return this.$store.getters.getExistsCompleted;
     },
   },
 };
