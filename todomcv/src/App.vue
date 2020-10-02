@@ -1,12 +1,14 @@
 <template>
-  <div id="todoApp">
-    <Header />
-    <Main
-      :todos="todos"
-      :activeQuantity="activeQuantity"
-      :existsCompleted="existsCompleted"
-    ></Main>
-    <Footer />
+  <div class="flex justify-center">
+    <div class="w-1/3">
+      <Header class="text-center"/>
+      <Main
+        :todos="todos"
+        :activeQuantity="activeQuantity"
+        :existsCompleted="existsCompleted"
+      ></Main>
+      <Footer class="text-center"/>
+    </div>
   </div>
 </template>
 

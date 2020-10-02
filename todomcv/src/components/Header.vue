@@ -1,5 +1,5 @@
 <template>
-  <h1>Todo List</h1>
+  <h1 class="text-5xl text-red-600 text-opacity-25">Todo List</h1>
 </template>
 
 <script>
@@ -13,7 +13,4 @@ export default {
 
 
 <style scoped>
-h1 {
-  color: red;
-}
 </style>
